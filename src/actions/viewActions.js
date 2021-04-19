@@ -11,9 +11,9 @@ export const GetViewList = (page) => async dispatch => {
 
         const perPage= 4;
         const offset = (page * perPage) - perPage;
-
+        
         const res = await axios.get (
-            url: `https://jsonplaceholder.typicode.com/posts?limit=${perPage}&offset=${offset}`
+            `https://jsonplaceholder.typicode.com/posts?limit=${perPage}&offset=${offset}`
         )
         dispatch({
             type: "VIEW_LIST_SUCCESS",
