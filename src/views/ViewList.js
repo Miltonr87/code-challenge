@@ -15,15 +15,21 @@ const ViewList = () => {
     const FetchData = (page = 1) => {
         dispatch(GetViewList(page))
     }
+    
+    const viewMap = viewList.data.map(object => {
+        return (
+        <div>
+            <p> {object.id} </p>
+            <Link to={`/view/${object.id}`}>View</Link>
+        </div>)
+    })
 
     const ShowData = () => {
         if (!_.isEmpty(viewList.data)) {
-            return viewList.data.map(object => {
-                return (<div>
-                    <p> {object.id} </p>
-                    <Link to={"/view/${object.id}"}>View</Link>
-                </div>)
-            })
+            return (
+            <div>    
+            {viewMap}
+            </div>)
         }   
 
         if (viewList.loading) {
